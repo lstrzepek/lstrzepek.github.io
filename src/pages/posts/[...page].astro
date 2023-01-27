@@ -1,0 +1,65 @@
+---
+import { SITE, PAGE_SIZE } from "@config";
+import type { Frontmatter } from "@types";
+import LinkButton from "@components/LinkButton.astro";
+import Breadcrumbs from "@components/Breadcrumbs.astro";
+import Layout from "@layouts/Layout.astro";
+import Card from "@components/Card.astro";
+import Main from "@layouts/Main.astro";
+import Pagination from "@components/Pagination.astro";
+export async function getStaticPaths({ paginate }: any) {
+    const allPosts = await Astro.glob<Frontmatter>("./*.md");
+    const sortedPosts = allPosts.sort(
+        (a, b) =>
+            new Date(b.frontmatter.pubDate) - new Date(a.frontmatter.pubDate)
+    );
+    return paginate(sortedPosts, {
+        pageSize: PAGE_SIZE,
+    });
+}
+
+export interface Props {
+    page: {
+        data: [
+            {
+                frontmatter: Frontmatter;
+                url: string;
+            }
+        ];
+        lastPage: number;
+        url: {
+            next: string;
+            prev: string;
+            current: string;
+        };
+    };
+}
+
+const { page } = Astro.props;
+console.log(Astro.props);
+---
+
+<Layout title={`Posts | ${SITE.title}`}>
+    <Main pageTitle="Posts" pageDesc="All the articles I've posted.">
+        <ul>
+            {
+                page.data.map((post) => {
+                    return (
+                        <Card
+                            href={post.url}
+                            title={post.frontmatter.title}
+                            pubDate={post.frontmatter.pubDate}
+                            description={post.frontmatter.description}
+                        />
+                    );
+                })
+            }
+        </ul>
+    </Main>
+    <Pagination
+        totalPages={page.lastPage}
+        prev={page.url.prev}
+        next={page.url.next}
+    />
+    <!-- <Footer noMarginTop={totalPages > 1} /> -->
+</Layout>

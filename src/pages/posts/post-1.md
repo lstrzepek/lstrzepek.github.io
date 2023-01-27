@@ -1,5 +1,5 @@
 ---
-layout: ../../layouts/MarkdownPostLayout.astro 
+layout: ../../layouts/Post.astro 
 title: 'My First Blog Post'
 pubDate: 2022-07-01
 description: 'This is the first post of my new Astro blog.'
@@ -24,3 +24,9 @@ Welcome to my _new blog_ about learning Astro! Here, I will share my learning jo
 
 I will finish the Astro tutorial, and then keep adding more posts. Watch this space for more to come.
 Small change to check something
+
+Looping over collection and indicies
+```python
+for i, color in enumerate(colors):
+	print i, '-->', colors[i]
+```

@@ -1,9 +1,55 @@
 ---
-import Layout from '../layouts/Layout.astro';
+import Layout from "../layouts/Layout.astro";
 ---
 
 <Layout title="Welcome to Astro.">
-	<main>
-    <h1>Hi!</h1>
-	</main>
+    <main id="main-content">
+        <section id="hero">
+            <h1>Hi!</h1>
+            <p class="my-2">
+                AstroPaper is a minimal, responsive, accessible and SEO-friendly
+                Astro blog theme. This theme follows best practices and provides
+                accessibility out of the box. Light and dark mode are supported
+                by default. Moreover, additional color schemes can also be
+                configured.
+            </p>
+        </section>
+    </main>
 </Layout>
+
+<style>
+    /* ===== Hero Section ===== */
+    #hero {
+        @apply pt-8 pb-6;
+    }
+    #hero h1 {
+        @apply inline-block font-bold my-4 sm:my-8 text-3xl sm:text-5xl;
+    }
+    #hero .rss-link {
+        @apply mb-6;
+    }
+    #hero .rss-icon {
+        @apply h-6 w-6 scale-110 sm:scale-125 mb-2 sm:mb-3 fill-skin-accent;
+    }
+    #hero p {
+        @apply my-2;
+    }
+    .social-wrapper {
+        @apply flex flex-col sm:flex-row sm:items-center mt-4;
+    }
+    .social-links {
+        @apply whitespace-nowrap mr-2 sm:mb-0 mb-1;
+    }
+    /* ===== Featured & Recent Posts Sections ===== */
+    #featured,
+    #recent-posts {
+        @apply pt-12 pb-6;
+    }
+    #featured h2,
+    #recent-posts h2 {
+        @apply font-semibold text-2xl tracking-wide;
+    }
+    .all-posts-btn-wrapper {
+        @apply text-center my-8;
+    }
+</style>
