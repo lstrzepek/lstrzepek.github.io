@@ -1,21 +1,26 @@
 ---
+import type { PostFrontmatter } from "schemas";
 import PublishDate from "@components/PublishDate.astro";
 import Tag from "@components/Tag.astro";
-import Layout from "@layouts/Layout.astro";
-import type { Frontmatter } from "src/types";
+import BaseLayout from "@layouts/BaseLayout.astro";
 export interface Props {
-    frontmatter: Frontmatter;
+    frontmatter: PostFrontmatter;
 }
 const { frontmatter } = Astro.props;
 
-const { title, author, description, ogImage, pubDate, tags } = frontmatter;
+const {
+    title,
+    author,
+    description,
+    ogImage: image,
+    publishDate,
+    tags,
+} = frontmatter;
 
-const ogUrl = new URL(ogImage ? ogImage : `${title}.svg`, Astro.url.origin)
-    .href;
+const ogUrl = new URL(image ? image : `${title}.svg`, Astro.url.origin).href;
 ---
 
-{console.log(title)}
-<Layout title={title} author={author} description={description}>
+<BaseLayout title={title} author={author} description={description}>
     <div class="max-w-3xl mx-auto w-full px-2 flex justify-start">
         <button
             class="mt-8 mb-2 hover:opacity-75 flex focus-outline"
@@ -30,7 +35,7 @@ const ogUrl = new URL(ogImage ? ogImage : `${title}.svg`, Astro.url.origin)
     </div>
     <main id="main-content">
         <h1 class="post-title">{title}</h1>
-        <PublishDate pubDate={pubDate} />
+        <PublishDate pubDate={new Date(publishDate)} />
         <article
             id="article"
             role="article"
@@ -43,7 +48,7 @@ const ogUrl = new URL(ogImage ? ogImage : `${title}.svg`, Astro.url.origin)
             {tags.map((tag) => <Tag name={tag} />)}
         </ul>
     </main>
-</Layout>
+</BaseLayout>
 
 <style>
     main {

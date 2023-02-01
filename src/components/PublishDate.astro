@@ -1,16 +1,15 @@
 ---
 export interface Props {
-    pubDate: string;
+    pubDate: Date;
 }
 const { pubDate } = Astro.props;
-const myDateTime = new Date(pubDate);
-const date = myDateTime.toLocaleDateString([], {
+const date = pubDate.toLocaleDateString([], {
     year: "numeric",
     month: "long",
     day: "numeric",
 });
 
-const time = myDateTime.toLocaleTimeString([], {
+const time = pubDate.toLocaleTimeString([], {
     hour: "2-digit",
     minute: "2-digit",
 });
