@@ -1,7 +1,7 @@
 import type { NavItems } from './types'
 
 export const SITE = {
-    title: "Astro",
+    title: "lstrzepek",
     name: "Astro Blog",
     description: "My place in the Web",
     author: "Łukasz Strzępek"
@@ -24,13 +24,13 @@ export const NAV_ITEMS: NavItems = {
 export const SOCIALS = [
     {
         name: "Github",
-        href: "https://github.com/satnaing/astro-paper",
+        href: "https://github.com/lstrzepek",
         linkTitle: ` ${SITE.title} on Github`,
         active: true,
     },
     {
         name: "LinkedIn",
-        href: "https://github.com/satnaing/astro-paper",
+        href: "https://www.linkedin.com/in/lukaszstrzepek",
         linkTitle: `${SITE.title} on LinkedIn`,
         active: true,
     },
@@ -42,13 +42,13 @@ export const SOCIALS = [
     },
     {
         name: "Twitter",
-        href: "https://github.com/satnaing/astro-paper",
+        href: "https://twitter.com/lstrzepek",
         linkTitle: `${SITE.title} on Twitter`,
         active: true,
     },
     {
         name: "Instagram",
-        href: "https://github.com/satnaing/astro-paper",
+        href: "https://www.instagram.com/strzepek.me",
         linkTitle: `${SITE.title} on Instagram`,
         active: true,
     },

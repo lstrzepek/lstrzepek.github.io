@@ -1,5 +1,5 @@
 ---
-import type { PostFrontmatter } from "schemas";
+import type { PostFrontmatter } from "@schemas";
 import PublishDate from "@components/PublishDate.astro";
 import Tag from "@components/Tag.astro";
 import BaseLayout from "@layouts/BaseLayout.astro";
@@ -8,19 +8,12 @@ export interface Props {
 }
 const { frontmatter } = Astro.props;
 
-const {
-    title,
-    author,
-    description,
-    ogImage: image,
-    publishDate,
-    tags,
-} = frontmatter;
+const { title, description, image, publishDate, tags } = frontmatter;
 
 const ogUrl = new URL(image ? image : `${title}.svg`, Astro.url.origin).href;
 ---
 
-<BaseLayout title={title} author={author} description={description}>
+<BaseLayout title={title} author="JA" description={description}>
     <div class="max-w-3xl mx-auto w-full px-2 flex justify-start">
         <button
             class="mt-8 mb-2 hover:opacity-75 flex focus-outline"
